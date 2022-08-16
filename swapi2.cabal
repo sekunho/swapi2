@@ -1,0 +1,48 @@
+cabal-version:      3.0
+name:               swapi2
+version:            0.1.0.0
+synopsis:           A Star Wars API, but Improved
+description:        A Star Wars API, but Improved
+homepage:           https://swapi2.com
+
+bug-reports:        https://github.com/sekunho/swapi2/issues
+license:            AGPL-3.0-or-later
+license-file:       LICENSE
+author:             SEKUN
+maintainer:         sekun@hey.com
+
+copyright:          (c) 2022 Sek Un
+category:           Web
+extra-source-files: CHANGELOG.md
+
+library
+    exposed-modules:  MyLib
+
+    default-language: Haskell2010
+    hs-source-dirs:   src
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        base >=4.7 && <5
+      , mtl
+      , servant
+      , servant-server
+      , warp
+
+executable swapi2
+    main-is:          Main.hs
+
+    build-depends:
+        base >=4.7 && <5,
+        swapi2
+
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite swapi2-test
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          MyLibTest.hs
+    build-depends:    base >=4.7 && <5
